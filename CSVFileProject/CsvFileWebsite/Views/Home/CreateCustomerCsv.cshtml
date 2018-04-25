@@ -1,0 +1,41 @@
+﻿@model CsvFileProject.Common.Objects.ViewModels.HomeIndexViewModel
+
+<h2>Upload File</h2>
+
+@using (Html.BeginForm("CreateCustomerCsv", "Home", null, FormMethod.Post))
+{
+    <h3>ViewBag.Result</h3>
+
+    <div>
+        <span style="color:red">
+            @Html.ValidationSummary()
+        </span>
+        @if (Model != null)
+        {
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:300px;">Id</th>
+                    <th style="width:300px;">Name</th>
+                    <th style="width:300px;">Address</th>
+                    <th style="width:300px;">Email</th>
+                    <th style="width:300px;">Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Customers.Count; i++)
+            {
+                <tr>
+                    <td>@Html.TextBoxFor(o => o.Customers[i].Id)</td>
+                    <td>@Html.TextBoxFor(o => o.Customers[i].Name)</td>
+                    <td>@Html.TextBoxFor(o => o.Customers[i].Address)</td>
+                    <td>@Html.TextBoxFor(o => o.Customers[i].Email)</td>
+                    <td>@Html.TextBoxFor(o => o.Customers[i].Mobile)</td>
+                </tr>
+        }
+            </tbody>
+        </table>
+        }
+    </div>
+    <div style="margin-top:300px;"><button type="submit">Submit</button></div>
+}

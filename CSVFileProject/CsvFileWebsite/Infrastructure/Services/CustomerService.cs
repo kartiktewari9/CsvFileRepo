@@ -43,9 +43,9 @@ namespace CsvFileWebsite.Infrastructure.Services
             return result;
         }
 
-        public void WriteCustomers(Stream stream, List<CustomerViewModel> customers)
+        public void WriteCustomers(StreamWriter stream, List<CustomerViewModel> customers)
         {
-            _csvFileWriter.Writer = new StreamWriter(stream);
+            _csvFileWriter.Writer = stream;
             foreach(var customer in customers)
             {
                 List<string> columns = new List<string>();
@@ -64,6 +64,6 @@ namespace CsvFileWebsite.Infrastructure.Services
     public interface ICustomerService
     {
         List<CustomerViewModel> GetCustomers(Stream stream);
-        void WriteCustomers(Stream stream, List<CustomerViewModel> customers);
+        void WriteCustomers(StreamWriter stream, List<CustomerViewModel> customers);
     }
 }

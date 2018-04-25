@@ -8,6 +8,10 @@ namespace CsvFileProject.Common.Objects.ViewModels
 {
     public class HomeIndexViewModel
     {
+        public HomeIndexViewModel()
+        {
+            Customers = new List<CustomerViewModel>();
+        }
         public List<CustomerViewModel> Customers { get; set; }
     }
 }

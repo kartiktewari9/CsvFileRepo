@@ -53,6 +53,45 @@ namespace CsvFileWebsite.Controllers
             return View();
         }
 
+        public ActionResult CreateCustomerCsv()
+        {
+            ViewBag.Result = "";
+            var model = new HomeIndexViewModel();
+            model.Customers.Add(new CustomerViewModel
+            {
+                Id=string.Empty,
+                Name= string.Empty,
+                Address= string.Empty,
+                Email= string.Empty,
+                Mobile= string.Empty
+            });
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateCustomerCsv(HomeIndexViewModel model)
+        {
+            ViewBag.Result = "";
+            if (ModelState.IsValid)
+            {
+                if(model.Customers.Count<1)
+                    ModelState.AddModelError("Customers", "Atleast one customer is mandatory to add to create a csv file!");
+                else
+                {
+                    var fileName = Guid.NewGuid().ToString();
+                    var stream = new StreamWriter(@"F:\Projects\CsvFileRepo\CSVFileProject\CsvFileWebsite\App_Data\CreatedCsv\"+ fileName+".csv");
+                    _customerService.WriteCustomers(stream, model.Customers);
+                    ViewBag.Result = "Success";
+                    ModelState.AddModelError("", @"File created successfully at location F:\Projects\CsvFileRepo\CSVFileProject\CsvFileWebsite\App_Data\CreatedCsv\"+ fileName + ".csv");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("","There is some issue in validating the model!");
+            }
+            return View(model);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

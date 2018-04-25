@@ -4,40 +4,55 @@
 
 @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.ValidationSummary()
 
-    <div class="form-group">
-        <input type="file" id="dataFile" name="upload" />
+
+    <div style="float:left;width:49%;">
+        <span style="color:red">
+            @Html.ValidationSummary()
+        </span>
+        <div class="form-group">
+            <input type="file" id="dataFile" name="upload" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Upload" class="btn btn-default" />
+        </div>
     </div>
-
-    <div class="form-group">
-        <input type="submit" value="Upload" class="btn btn-default" />
+    <div style="float:right;width:49%;">
+        <a href="@Url.Action("CreateCustomerCsv","Home")" target="_blank">Create a new customer csv</a>
     </div>
+    <div style="float:left;width:100%;margin-top:100px; min-height:100px;">
 
-    if (Model != null)
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var customer in Model.Customers)
+    </div>
+    <div>
+        @if (Model != null)
+        {
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model.Customers)
                 {
-                <tr>
-                    <td>@customer.Id</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Address</td>
-                    <td>@customer.Email</td>
-                    <td>@customer.Mobile</td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    }
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Address</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.Mobile</td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>
+        }
+    </div>
+    
 }
