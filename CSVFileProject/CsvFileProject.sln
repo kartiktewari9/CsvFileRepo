@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvFileProject.Common.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvFileWebsite", "CsvFileWebsite\CsvFileWebsite.csproj", "{71EFB811-FD90-4286-98A4-B5B444347A47}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{82BB8CF3-7CA1-4017-8968-37CD5B15548D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvTest", "CsvTest\CsvTest.csproj", "{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{71EFB811-FD90-4286-98A4-B5B444347A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71EFB811-FD90-4286-98A4-B5B444347A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71EFB811-FD90-4286-98A4-B5B444347A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D68C7D8-7AA5-4050-BCC0-C082F6A97F32} = {82BB8CF3-7CA1-4017-8968-37CD5B15548D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A7D0142-856B-4C9E-B3B4-149200611078}

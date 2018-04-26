@@ -19,6 +19,18 @@ namespace CsvFileProject.Common.Services.Services
         private int CurrPos;
         private EmptyLineBehaviorEnum _emptyLineBehaviorEnum;
 
+        public EmptyLineBehaviorEnum EmptyLineBehaviorEnum
+        {
+            get
+            {
+                return _emptyLineBehaviorEnum;
+            }
+            set
+            {
+                _emptyLineBehaviorEnum = value;
+            }
+        }
+
         /// <summary>
         /// These are special characters in CSV files. If a column contains any
         /// of these characters, the entire column is wrapped in double quotes.
