@@ -57,6 +57,7 @@ namespace CsvFileWebsite.Infrastructure.Services
 
                 _csvFileWriter.WriteRow(columns);
             }
+            _csvFileWriter.Writer.Close();
             _csvFileWriter.Dispose();
         }
     }

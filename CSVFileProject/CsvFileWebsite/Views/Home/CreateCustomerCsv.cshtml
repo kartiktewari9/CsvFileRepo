@@ -12,30 +12,53 @@
         </span>
         @if (Model != null)
         {
-        <table>
-            <thead>
-                <tr>
-                    <th style="width:300px;">Id</th>
-                    <th style="width:300px;">Name</th>
-                    <th style="width:300px;">Address</th>
-                    <th style="width:300px;">Email</th>
-                    <th style="width:300px;">Mobile</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (var i = 0; i < Model.Customers.Count; i++)
-            {
-                <tr>
-                    <td>@Html.TextBoxFor(o => o.Customers[i].Id)</td>
-                    <td>@Html.TextBoxFor(o => o.Customers[i].Name)</td>
-                    <td>@Html.TextBoxFor(o => o.Customers[i].Address)</td>
-                    <td>@Html.TextBoxFor(o => o.Customers[i].Email)</td>
-                    <td>@Html.TextBoxFor(o => o.Customers[i].Mobile)</td>
-                </tr>
-        }
-            </tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:300px;">Id</th>
+                        <th style="width:300px;">Name</th>
+                        <th style="width:300px;">Address</th>
+                        <th style="width:300px;">Email</th>
+                        <th style="width:300px;">Mobile</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTable">
+                    @for (var i = 0; i < Model.Customers.Count; i++)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(o => o.Customers[i].Id)</td>
+                            <td>@Html.TextBoxFor(o => o.Customers[i].Name)</td>
+                            <td>@Html.TextBoxFor(o => o.Customers[i].Address)</td>
+                            <td>@Html.TextBoxFor(o => o.Customers[i].Email)</td>
+                            <td>@Html.TextBoxFor(o => o.Customers[i].Mobile)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <input type="button" onclick="addNewCustomer()" value="Add New Customer">
         }
     </div>
     <div style="margin-top:300px;"><button type="submit">Submit</button></div>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        var initialElement = 0;
+
+        function addNewCustomer() {
+            initialElement += 1;
+            var idRow = '<td><input id="Customers_' + initialElement + '__Id" name="Customers[' + initialElement +'].Id" type="text" value=""></td>';
+            var nameRow = '<td><input id="Customers_' + initialElement + '__Name" name="Customers[' + initialElement +'].Name" type="text" value=""></td>';
+            var addressRow = '<td><input id="Customers_' + initialElement + '__Address" name="Customers[' + initialElement +'].Address" type="text" value=""></td>';
+            var emailRow = '<td><input id="Customers_' + initialElement + '__Email" name="Customers[' + initialElement +'].Email" type="text" value=""></td>';
+            var mobileRow = '<td><input id="Customers_' + initialElement + '__Mobile" name="Customers[' + initialElement + '].Mobile" type="text" value=""></td>'
+            var deleteButton = '<td><input type="button" onclick="deleteCustomer(this)" value="Delete"></td>';
+            var row = '<tr>' + idRow + nameRow + addressRow + emailRow + mobileRow + deleteButton +'</tr>';
+            $('#customerTable').append(row);
+        }
+
+        function deleteCustomer(id) {
+            id.closest('tr').remove();
+        }
+    </script>
 }
